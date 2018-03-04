@@ -305,6 +305,8 @@ public class ServerControler {
 
 
 
+        System.out.println("Je push une requête ...");
+
         friendRequest.add(new FriendRequest(my_id, friend_id, null));
 
 
@@ -407,7 +409,7 @@ public class ServerControler {
             return "{'error' : 'You cannot be checked !!!'}";
 
 
-        // ===== TEST ====
+        System.out.println("J'attend que mon pote reponde");
 
         for (FriendRequest request: friendRequest)
             if(request.getMyFriend().equals(my_id) && request.getDemandeur().equals(friend_id)) {
@@ -429,7 +431,6 @@ public class ServerControler {
      *
      * @param key
      * @param my_id
-     * @param friend_id
      * @return
      * @throws Exception
      */
@@ -437,11 +438,9 @@ public class ServerControler {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public String getResponseFriend(@RequestParam("key") String key,
-                                     @RequestParam("my_id") String my_id,
-                                      @RequestParam("firend_id") String friend_id) throws Exception{
+                                     @RequestParam("my_id") String my_id) throws Exception{
 
         Boolean my_idOk = false;
-        Boolean friend_idOk = false;
 
         // Vérification du code
         if(!key.equals(serverKey))
@@ -449,32 +448,41 @@ public class ServerControler {
 
 
         // Parcour de la liste d'amis
-        for(Amis amis: amisList) {
-            // Si l'id est dans la liste
+        for(Amis amis: amisList)
             if (amis.getId().equals(my_id))
                 my_idOk = true;
-            if(amis.getId().equals(friend_id))
-                friend_idOk = true;
-        }
 
 
-        if(!my_idOk && !friend_idOk)
+
+        if(!my_idOk)
             return "{'error' : 'You cannot be checked !!!'}";
 
 
-        this.jeuList.add(new Jeu(my_id, friend_id, 0, 0));
         int i = 0;
         int indice = 0;
         for(FriendRequest fr: this.friendRequest) {
-            if(fr.getDemandeur().equals(my_id) && fr.getMyFriend().equals(friend_id)){
+
+            System.out.println("Indice : " + i + "\nDemandeur : " + fr.getDemandeur() + "\nFriend : " + fr.getMyFriend());
+
+            if(fr.getDemandeur().equals(my_id)){
                 indice = i;
+            } else {
+                i++;
             }
-            i++;
         }
-        this.friendRequest.remove(indice);
 
-        return getQuestions(my_id);
+        System.out.println("J'attend la réponse du copain");
 
+        if(this.friendRequest.get(i).getResponse() != null) {
+            if(this.friendRequest.get(i).getResponse().equals("no")){
+                this.jeuList.add(new Jeu(my_id, this.friendRequest.get(i).getMyFriend(),
+                        0, 0));
+                this.friendRequest.remove(indice);
+                return getQuestions(my_id);
+            }
+        }
+
+        return "no";
     }
 
 
