@@ -1,5 +1,6 @@
 package org.android.server.bean;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
@@ -28,6 +29,13 @@ public class Question {
     @SerializedName("answers")
     private List<Reponse> answers;
 
+    private List<Question> questionList = new ArrayList<>();
+    private static int questionIndice = 0;
+    private static int questionEvoyer = 0;
+    private static int nbrQuestion = 1;
+
+    public Question() {}
+
     public Question(String id, String q, List<Reponse> r, String dur) {
 
         this.id = id;
@@ -37,36 +45,39 @@ public class Question {
 
     }
 
-    public String getId() {
-        return id;
+
+
+    public void addQuestionList(Question question) {
+        this.questionList.add(question);
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
-    public String getText() {
-        return text;
-    }
+    /**
+     * Méthode qui permet de reçevoir une question
+     *
+     * @param key
+     * @return
+     */
+    public String getQuestion(String key, String serverKey) {
 
-    public void setText(String text) {
-        this.text = text;
-    }
+        Gson gson = new Gson();
+        int indice = questionIndice;
 
-    public String getDuration() {
-        return duration;
-    }
+        questionEvoyer++;
+        if(questionEvoyer == 2) {
+            questionEvoyer = 0;
+            questionIndice++;
+        }
 
-    public void setDuration(String duration) {
-        this.duration = duration;
-    }
+        if(questionIndice == questionList.size())
+            questionIndice = 0;
 
-    public List<Reponse> getAnswers() {
-        return answers;
-    }
+        // Vérification du code
+        if(!key.equals(serverKey))
+            return "{'error' : 'Server key not defined yet !!!'}";
 
-    public void setAnswers(List<Reponse> answers) {
-        this.answers = answers;
+
+        return gson.toJson(questionList.get(indice));
     }
 }
 

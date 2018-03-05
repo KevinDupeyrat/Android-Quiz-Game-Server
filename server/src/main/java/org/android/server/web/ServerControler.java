@@ -42,359 +42,137 @@ public class ServerControler {
 
 
     private final String serverKey = "123456";
-    private List<Amis> amisList;
-    private List<Question> questionList;
-    private List<FriendRequest> friendRequest;
-    private List<Jeu> jeuList = new ArrayList<>();
+    private Amis amisControler = new Amis();
+    private Question questionControler = new Question();
+    private FriendRequest friendRequestControler = new FriendRequest();
+    private Jeu jeuControler = new Jeu();
 
-    private static int questionIndice = 0;
-    private static int questionEvoyer = 0;
 
-    private static int nbrQuestion = 1;
 
 
     public ServerControler() {
 
 
-        // Liste d'amis
-        amisList = new ArrayList<>();
-        amisList.add(new Amis("1", "Ahmed", "Chaouche", "0","http://localhost/classroom_server/photos/photo-chaouche.jpg", "15"));
-        amisList.add(new Amis("2", "Jean-Michel", "Ilié", "0","", "0"));
-        amisList.add(new Amis("3", "Abdouradjack", "Allmmin", "0","", "0"));
-        amisList.add(new Amis("4", "Ali", "Asic", "0","", "0"));
-        amisList.add(new Amis("5", "Amzil", "Inamm", "0","", "0"));
-        amisList.add(new Amis("6", "Belarousse", "Driss", "0","", "0"));
-        amisList.add(new Amis("7", "Bourgis", "Jeremy", "0","", "0"));
-        amisList.add(new Amis("8", "Demmas", "Anas", "0","", "0"));
-        amisList.add(new Amis("9", "Dia", "Ndoumbe", "0","", "0"));
-        amisList.add(new Amis("10", "Desableau", "Quentin", "0","", "0"));
-        amisList.add(new Amis("11", "Dupeyrat", "Kevin", "0","", "0"));
-        amisList.add(new Amis("12", "Eddaoudi", "Atimad", "0","", "0"));
-        amisList.add(new Amis("13", "Ferreira", "Hugo", "0","", "0"));
-        amisList.add(new Amis("14", "Goual", "Amine", "0","", "0"));
-        amisList.add(new Amis("15", "Hamoudi", "Jonathan", "0","", "0"));
-        amisList.add(new Amis("16", "Helderal", "Mike", "0","", "0"));
-        amisList.add(new Amis("17", "Kathirgamanathan", "Gamaliny", "0","", "0"));
-        amisList.add(new Amis("18", "Kial", "Ramdane", "0","", "0"));
-        amisList.add(new Amis("19", "Kulanathan", "Vijay", "0","", "0"));
-        amisList.add(new Amis("20", "Laplace", "Junior", "0","", "0"));
-        amisList.add(new Amis("21", "Lim", "Patrick", "0","", "0"));
-        amisList.add(new Amis("22", "Picois", "Charlotte", "0","", "0"));
-        amisList.add(new Amis("23", "Rosaz", "Boris", "0","", "0"));
-        amisList.add(new Amis("24", "Salemi", "Mehdi", "0","", "0"));
-        amisList.add(new Amis("25", "Seymour", "Alex", "0","", "0"));
-        amisList.add(new Amis("26", "Tahri", "Abderrahman", "0","", "0"));
-        amisList.add(new Amis("27", "Touresse", "Clement", "0","", "0"));
-        amisList.add(new Amis("28", "Vincent", "Kevin", "0","", "0"));
-
-
-
-        // Liste de question
-        questionList = new ArrayList<>();
-        List<Reponse> reponseList = new ArrayList<>();
-        reponseList.add(new Reponse("1", "Smeagole", "1"));
-        reponseList.add(new Reponse("2", "Gandalf", "0"));
-        reponseList.add(new Reponse("3", "Frondo", "0"));
-        reponseList.add(new Reponse("4", "Bruce Wayne", "0"));
-        List<Reponse> reponseList2 = new ArrayList<>();
-        reponseList2.add(new Reponse("1", "Marta", "1"));
-        reponseList2.add(new Reponse("2", "Penny", "0"));
-        reponseList2.add(new Reponse("3", "Sophia", "0"));
-        reponseList2.add(new Reponse("4", "Laura", "0"));
-        List<Reponse> reponseList3 = new ArrayList<>();
-        reponseList3.add(new Reponse("1", "Shrodinger", "1"));
-        reponseList3.add(new Reponse("2", "Le chat potté", "0"));
-        reponseList3.add(new Reponse("3", "Catwoman", "0"));
-        reponseList3.add(new Reponse("4", "Grominet", "0"));
-        questionList.add(new Question("1","Quel est le nom de Golumm", reponseList, "10"));
-        questionList.add(new Question("2","Quel est le prénom de la mère de Clark Kent ?", reponseList2, "10"));
-        questionList.add(new Question("3","Comment s'appelle le chat à la fois mort et vivant", reponseList3, "10"));
+        amisControler.addFriendList(new Amis("1", "Ahmed", "Chaouche", "0","http://localhost/classroom_server/photos/photo-chaouche.jpg", "15"));
+        amisControler.addFriendList(new Amis("2", "Jean-Michel", "Ilié", "0","", "0"));
+        amisControler.addFriendList(new Amis("3", "Abdouradjack", "Allmmin", "0","", "0"));
+        amisControler.addFriendList(new Amis("4", "Ali", "Asic", "0","", "0"));
+        amisControler.addFriendList(new Amis("5", "Amzil", "Inamm", "0","", "0"));
+        amisControler.addFriendList(new Amis("6", "Belarousse", "Driss", "0","", "0"));
+        amisControler.addFriendList(new Amis("7", "Bourgis", "Jeremy", "0","", "0"));
+        amisControler.addFriendList(new Amis("8", "Demmas", "Anas", "0","", "0"));
+        amisControler.addFriendList(new Amis("9", "Dia", "Ndoumbe", "0","", "0"));
+        amisControler.addFriendList(new Amis("10", "Desableau", "Quentin", "0","", "0"));
+        amisControler.addFriendList(new Amis("11", "Dupeyrat", "Kevin", "0","", "0"));
+        amisControler.addFriendList(new Amis("12", "Eddaoudi", "Atimad", "0","", "0"));
+        amisControler.addFriendList(new Amis("13", "Ferreira", "Hugo", "0","", "0"));
+        amisControler.addFriendList(new Amis("14", "Goual", "Amine", "0","", "0"));
+        amisControler.addFriendList(new Amis("15", "Hamoudi", "Jonathan", "0","", "0"));
+        amisControler.addFriendList(new Amis("16", "Helderal", "Mike", "0","", "0"));
+        amisControler.addFriendList(new Amis("17", "Kathirgamanathan", "Gamaliny", "0","", "0"));
+        amisControler.addFriendList(new Amis("18", "Kial", "Ramdane", "0","", "0"));
+        amisControler.addFriendList(new Amis("19", "Kulanathan", "Vijay", "0","", "0"));
+        amisControler.addFriendList(new Amis("20", "Laplace", "Junior", "0","", "0"));
+        amisControler.addFriendList(new Amis("21", "Lim", "Patrick", "0","", "0"));
+        amisControler.addFriendList(new Amis("22", "Picois", "Charlotte", "0","", "0"));
+        amisControler.addFriendList(new Amis("23", "Rosaz", "Boris", "0","", "0"));
+        amisControler.addFriendList(new Amis("24", "Salemi", "Mehdi", "0","", "0"));
+        amisControler.addFriendList(new Amis("25", "Seymour", "Alex", "0","", "0"));
+        amisControler.addFriendList(new Amis("26", "Tahri", "Abderrahman", "0","", "0"));
+        amisControler.addFriendList(new Amis("27", "Touresse", "Clement", "0","", "0"));
+        amisControler.addFriendList(new Amis("28", "Vincent", "Kevin", "0","", "0"));
 
 
 
 
-        // Liste de requete d'amis
-        friendRequest = new ArrayList<>();
+        Reponse responseControler = new Reponse();
+        responseControler.addReponseLiser(new Reponse("1", "Smeagole", "1"));
+        responseControler.addReponseLiser(new Reponse("2", "Gandalf", "0"));
+        responseControler.addReponseLiser(new Reponse("3", "Frondo", "0"));
+        responseControler.addReponseLiser(new Reponse("4", "Bruce Wayne", "0"));
+
+        Reponse responseControler2 = new Reponse();
+        responseControler2.addReponseLiser(new Reponse("1", "Marta", "1"));
+        responseControler2.addReponseLiser(new Reponse("2", "Penny", "0"));
+        responseControler2.addReponseLiser(new Reponse("3", "Sophia", "0"));
+        responseControler2.addReponseLiser(new Reponse("4", "Laura", "0"));
+
+        Reponse responseControler3 = new Reponse();
+        responseControler3.addReponseLiser(new Reponse("1", "Shrodinger", "1"));
+        responseControler3.addReponseLiser(new Reponse("2", "Le chat potté", "0"));
+        responseControler3.addReponseLiser(new Reponse("3", "Catwoman", "0"));
+        responseControler3.addReponseLiser(new Reponse("4", "Grominet", "0"));
+
+        questionControler.addQuestionList(new Question("1","Quel est le nom de Golumm", responseControler.getReponseList(), "10"));
+        questionControler.addQuestionList(new Question("2","Quel est le prénom de la mère de Clark Kent ?", responseControler2.getReponseList(), "10"));
+        questionControler.addQuestionList(new Question("3","Comment s'appelle le chat à la fois mort et vivant", responseControler3.getReponseList(), "10"));
+
 
     }
 
 
     
 
-    /**
-     * Méthode qui permet de ce connecter au server
-     * et donc de ce rendre disponnible pour jouer
-     *
-     * @param key
-     * @param id
-     * @return
-     * @throws Exception
-     */
+
     @RequestMapping(value = "/checkAttending", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public String checkAttending(@RequestParam("key") String key,
     @RequestParam("id") String id) throws Exception{
 
-        Boolean idOk = false;
-
-
-        // Vérification du code
-        if(!key.equals(serverKey))
-            return "{'error' : 'Server key not defined yet !!!'}";
-
-
-        // Parcour de la liste d'amis
-        for(Amis amis: amisList) {
-            // Si l'id est dans la liste
-            if (amis.getId().equals(id)) {
-                idOk = true;
-                amis.setIs_present("1");
-            }
-        }
-
-        if(!idOk)
-            return "{'error' : 'You cannot be checked !!!'}";
-
-
-
-        return "";
+        return amisControler.checkAttending(key, id, serverKey);
     }
 
 
-
-
-
-
-    /**
-     * Méthode qui permet de nous deconnecter du server
-     * et nous rendre donc indisponnible pour jouer
-     *
-     * @param key
-     * @param id
-     * @return
-     * @throws Exception
-     */
     @RequestMapping(value = "/disconnect", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public String disconnect(@RequestParam("key") String key,
                                  @RequestParam("id") String id) throws Exception{
 
-        Boolean idOk = false;
-
-
-        // Vérification du code
-        if(!key.equals(serverKey))
-            return "{'error' : 'Server key not defined yet !!!'}";
-
-
-        // Parcour de la liste d'amis
-        for(Amis amis: amisList) {
-            // Si l'id est dans la liste
-            if (amis.getId().equals(id)) {
-                idOk = true;
-                amis.setIs_present("0");
-            }
-        }
-
-        if(!idOk)
-            return "{'error' : 'You cannot be checked !!!'}";
-
-
-
-        for(Amis amis: amisList)
-            System.out.println(amis.getFirst_name() + "  " + amis.getIs_present());
-
-        return "";
+        return amisControler.disconnect(key, id, serverKey);
     }
 
 
-
-
-
-    /**
-     * Méthode qui nous permet de reçevoir la liste d'amis
-     *
-     * @param key
-     * @return
-     * @throws Exception
-     */
     @RequestMapping(value = "/getFriends", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public String getFriends(@RequestParam("key") String key) throws Exception{
 
-
-        Gson gson = new Gson();
-
-        // Vérification du code
-        if(!key.equals(serverKey))
-            return "{'error' : 'Server key not defined yet !!!'}";
-
-
-            return gson.toJson(amisList);
+        return amisControler.getFriends(key, serverKey);
     }
 
 
-
-
-
-    /**
-     * Méthode qui permet de reçevoir une question
-     *
-     * @param key
-     * @return
-     * @throws Exception
-     */
     @RequestMapping(value = "/getQuestions", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public String getQuestions(@RequestParam("key") String key) throws Exception{
 
-
-        Gson gson = new Gson();
-        int indice = questionIndice;
-
-        questionEvoyer++;
-        if(questionEvoyer == 2) {
-            questionEvoyer = 0;
-            questionIndice++;
-        }
-
-        if(questionIndice == questionList.size())
-            questionIndice = 0;
-
-        // Vérification du code
-        if(!key.equals(serverKey))
-            return "{'error' : 'Server key not defined yet !!!'}";
-
-
-        return gson.toJson(questionList.get(indice));
+        return questionControler.getQuestion(key, serverKey);
     }
 
 
-
-
-
-
-    /**
-     * Méthode qui permet d'envoyer sur le server
-     * une requête pour un amis
-     *
-     * @param key
-     * @param my_id
-     * @param friend_id
-     * @return
-     * @throws Exception
-     */
     @RequestMapping(value = "/putRequestFriend", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public String putRequestFriend(@RequestParam("key") String key,
     @RequestParam("my_id") String my_id, @RequestParam("friend_id") String friend_id) throws Exception{
 
-        Boolean my_idOk = false;
-        Boolean friend_idOk = false;
-
-        // Vérification du code
-        if(!key.equals(serverKey))
-            return "{'error' : 'Server key not defined yet !!!'}";
-
-
-        // Parcour de la liste d'amis
-        for(Amis amis: amisList) {
-            // Si l'id est dans la liste
-            if (amis.getId().equals(my_id))
-                my_idOk = true;
-            if(amis.getId().equals(friend_id))
-                friend_idOk = true;
-        }
-
-
-        if(!my_idOk && !friend_idOk)
-            return "{'error' : 'You cannot be checked !!!'}";
-
-
-
-        System.out.println("Je push une requête ...");
-
-        friendRequest.add(new FriendRequest(my_id, friend_id, null));
-
-
-        return null;
+        return friendRequestControler.putRequestFriend(
+                key, serverKey, my_id, friend_id, amisControler.getAmisList());
     }
 
 
-
-
-
-    /**
-     * Méthode qui permet de vérifier si nous avons une requête
-     * qui nous attend sur le server
-     *
-     * @param key
-     * @param my_id
-     * @return
-     * @throws Exception
-     */
     @RequestMapping(value = "/checkRequest", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public String checkRequest(@RequestParam("key") String key,
                                    @RequestParam("my_id") String my_id) throws Exception{
 
-        Boolean idOk = false;
-
-
-        // Vérification du code
-        if(!key.equals(serverKey))
-            return "{'error' : 'Server key not defined yet !!!'}";
-
-
-        // Parcour de la liste d'amis
-        for(Amis amis: amisList) {
-            // Si l'id est dans la liste
-            if (amis.getId().equals(my_id)) {
-                idOk = true;
-            }
-        }
-
-        if(!idOk)
-            return "{'error' : 'You cannot be checked !!!'}";
-
-
-        // S'il y a une requête on envoie le nom et le prénom de
-        // celui qui a fait la demande
-        for (FriendRequest request: friendRequest)
-            if(request.getMyFriend().equals(my_id)){
-                for(Amis amis: amisList){
-                    if(amis.getId().equals(request.getDemandeur()))
-                        return amis.getId();
-                }
-            }
-
-
-
-
-        return "please wait";
+        return friendRequestControler.checkRequest(key, serverKey, my_id, amisControler.getAmisList());
     }
 
 
-
-
-
-    /**
-     * Méthode qui permet de renvoyer notre reponse
-     * au server
-     *
-     * @param key
-     * @param my_id
-     * @param friend_id
-     * @param response
-     * @return
-     * @throws Exception
-     */
     @RequestMapping(value = "/responceRequestFriend", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
@@ -403,115 +181,20 @@ public class ServerControler {
                                         @RequestParam("friend_id") String friend_id,
                                         @RequestParam("response") String response) throws Exception{
 
-
-
-        Boolean my_idOk = false;
-        Boolean friend_idOk = false;
-
-        // Vérification du code
-        if(!key.equals(serverKey))
-            return "{'error' : 'Server key not defined yet !!!'}";
-
-
-        // Parcour de la liste d'amis
-        for(Amis amis: amisList) {
-            // Si l'id est dans la liste
-            if (amis.getId().equals(my_id))
-                my_idOk = true;
-            if(amis.getId().equals(friend_id))
-                friend_idOk = true;
-        }
-
-
-        if(!my_idOk && !friend_idOk)
-            return "{'error' : 'You cannot be checked !!!'}";
-
-
-        System.out.println("J'attend que mon pote reponde");
-
-        for (FriendRequest request: friendRequest)
-            if(request.getMyFriend().equals(my_id) && request.getDemandeur().equals(friend_id)) {
-                if(response.equals("yes"))
-                    request.setResponse(true);
-                else
-                    request.setResponse(false);
-                return "{'responseRequeste' : 'your response as been post'}";
-            }
-
-
-        return null;
+        return friendRequestControler.responceRequestFriend(key, serverKey, my_id, friend_id,
+                amisControler.getAmisList(), response);
     }
 
 
-
-
-
-    /**
-     * Méthode qui permet de vérifier si notre amis
-     * a repondu à notre requête
-     *
-     * @param key
-     * @param my_id
-     * @return
-     * @throws Exception
-     */
     @RequestMapping(value = "/getResponseFriend", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public String getResponseFriend(@RequestParam("key") String key,
                                      @RequestParam("my_id") String my_id) throws Exception{
 
-        Boolean my_idOk = false;
-
-        // Vérification du code
-        if(!key.equals(serverKey))
-            return "{'error' : 'Server key not defined yet !!!'}";
-
-
-        // Parcour de la liste d'amis
-        for(Amis amis: amisList)
-            if (amis.getId().equals(my_id))
-                my_idOk = true;
-
-
-
-        if(!my_idOk)
-            return "{'error' : 'You cannot be checked !!!'}";
-
-
-        int i = 0;
-        int indice = 0;
-        for(FriendRequest fr: this.friendRequest) {
-
-            System.out.println("Indice : " + i + "\nDemandeur : "
-                    + fr.getDemandeur() + "\nFriend : "
-                    + fr.getMyFriend() + "\nResponse : "
-                    + fr.getResponse());
-
-            if(fr.getDemandeur().equals(my_id)){
-                indice = i;
-            } else {
-                i++;
-            }
-        }
-
-        System.out.println("J'attend la réponse du copain");
-
-        if(this.friendRequest.get(i).getResponse() != null) {
-            if(this.friendRequest.get(i).getResponse()){
-                this.jeuList.add(new Jeu(my_id, this.friendRequest.get(i).getMyFriend(),
-                        0, 0));
-                this.friendRequest.remove(indice);
-                return "yes";
-            }
-        }
-
-        System.out.println("JE VAIS RENVOYER NO");
-        return "no";
+        return friendRequestControler.getResponseFriend(key, serverKey, my_id, amisControler.getAmisList(),
+                jeuControler.getJeuList());
     }
-
-
-
 
 
 

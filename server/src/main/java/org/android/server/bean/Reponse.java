@@ -2,6 +2,9 @@ package org.android.server.bean;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by dupeyrat on 28/02/18.
  *
@@ -18,6 +21,11 @@ public class Reponse {
     private String text;
     @SerializedName("is_right")
     private String is_right;
+
+    private List<Reponse> reponseList = new ArrayList<>();
+
+    public Reponse() {}
+
 
     public Reponse(String id, String reponse, String bonneReponse) {
 
@@ -49,5 +57,13 @@ public class Reponse {
 
     public void setIs_right(String is_right) {
         this.is_right = is_right;
+    }
+
+    public List<Reponse> getReponseList(){
+        return this.reponseList;
+    }
+
+    public void addReponseLiser(Reponse reponse) {
+        this.reponseList.add(reponse);
     }
 }

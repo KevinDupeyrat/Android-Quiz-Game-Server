@@ -1,5 +1,8 @@
 package org.android.server.bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Jeu {
 
     private String joueur1;
@@ -7,6 +10,10 @@ public class Jeu {
     private int scoreJoueur1;
     private int scoreJoueur2;
 
+    private List<Jeu> jeuList = new ArrayList<>();
+
+
+    public Jeu() {}
 
     public Jeu(String joueur1, String joueur2, int scoreJoueur1, int scoreJoueur2) {
         this.joueur1 = joueur1;
@@ -47,4 +54,10 @@ public class Jeu {
     public void setScoreJoueur2(int scoreJoueur2) {
         this.scoreJoueur2 = scoreJoueur2;
     }
+
+    public List<Jeu> getJeuList() {
+        return jeuList;
+    }
 }
+
+
