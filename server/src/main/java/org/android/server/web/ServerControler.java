@@ -45,7 +45,7 @@ public class ServerControler {
     private List<Amis> amisList;
     private List<Question> questionList;
     private List<FriendRequest> friendRequest;
-    private List<Jeu> jeuList;
+    private List<Jeu> jeuList = new ArrayList<>();
 
     private static int questionIndice = 0;
     private static int questionEvoyer = 0;
@@ -96,7 +96,19 @@ public class ServerControler {
         reponseList.add(new Reponse("2", "Gandalf", "0"));
         reponseList.add(new Reponse("3", "Frondo", "0"));
         reponseList.add(new Reponse("4", "Bruce Wayne", "0"));
+        List<Reponse> reponseList2 = new ArrayList<>();
+        reponseList2.add(new Reponse("1", "Marta", "1"));
+        reponseList2.add(new Reponse("2", "Penny", "0"));
+        reponseList2.add(new Reponse("3", "Sophia", "0"));
+        reponseList2.add(new Reponse("4", "Laura", "0"));
+        List<Reponse> reponseList3 = new ArrayList<>();
+        reponseList3.add(new Reponse("1", "Shrodinger", "1"));
+        reponseList3.add(new Reponse("2", "Le chat potté", "0"));
+        reponseList3.add(new Reponse("3", "Catwoman", "0"));
+        reponseList3.add(new Reponse("4", "Grominet", "0"));
         questionList.add(new Question("1","Quel est le nom de Golumm", reponseList, "10"));
+        questionList.add(new Question("2","Quel est le prénom de la mère de Clark Kent ?", reponseList2, "10"));
+        questionList.add(new Question("3","Comment s'appelle le chat à la fois mort et vivant", reponseList3, "10"));
 
 
 
@@ -358,7 +370,7 @@ public class ServerControler {
             if(request.getMyFriend().equals(my_id)){
                 for(Amis amis: amisList){
                     if(amis.getId().equals(request.getDemandeur()))
-                        return amis.getFirst_name() + " " + amis.getLast_name();
+                        return amis.getId();
                 }
             }
 
@@ -419,7 +431,10 @@ public class ServerControler {
 
         for (FriendRequest request: friendRequest)
             if(request.getMyFriend().equals(my_id) && request.getDemandeur().equals(friend_id)) {
-                request.setDemandeur(response);
+                if(response.equals("yes"))
+                    request.setResponse(true);
+                else
+                    request.setResponse(false);
                 return "{'responseRequeste' : 'your response as been post'}";
             }
 
@@ -468,7 +483,10 @@ public class ServerControler {
         int indice = 0;
         for(FriendRequest fr: this.friendRequest) {
 
-            System.out.println("Indice : " + i + "\nDemandeur : " + fr.getDemandeur() + "\nFriend : " + fr.getMyFriend());
+            System.out.println("Indice : " + i + "\nDemandeur : "
+                    + fr.getDemandeur() + "\nFriend : "
+                    + fr.getMyFriend() + "\nResponse : "
+                    + fr.getResponse());
 
             if(fr.getDemandeur().equals(my_id)){
                 indice = i;
@@ -480,14 +498,15 @@ public class ServerControler {
         System.out.println("J'attend la réponse du copain");
 
         if(this.friendRequest.get(i).getResponse() != null) {
-            if(this.friendRequest.get(i).getResponse().equals("no")){
+            if(this.friendRequest.get(i).getResponse()){
                 this.jeuList.add(new Jeu(my_id, this.friendRequest.get(i).getMyFriend(),
                         0, 0));
                 this.friendRequest.remove(indice);
-                return getQuestions(my_id);
+                return "yes";
             }
         }
 
+        System.out.println("JE VAIS RENVOYER NO");
         return "no";
     }
 
