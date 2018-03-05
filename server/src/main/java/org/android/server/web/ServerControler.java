@@ -58,34 +58,34 @@ public class ServerControler {
 
         // Liste d'amis
         amisList = new ArrayList<>();
-        amisList.add(new Amis("1", "Ahmed", "Chaouche", "1","http://localhost/classroom_server/photos/photo-chaouche.jpg", "15"));
-        amisList.add(new Amis("2", "Jean-Michel", "Ilié", "1","", "0"));
+        amisList.add(new Amis("1", "Ahmed", "Chaouche", "0","http://localhost/classroom_server/photos/photo-chaouche.jpg", "15"));
+        amisList.add(new Amis("2", "Jean-Michel", "Ilié", "0","", "0"));
         amisList.add(new Amis("3", "Abdouradjack", "Allmmin", "0","", "0"));
-        amisList.add(new Amis("4", "Ali", "Asic", "1","", "0"));
+        amisList.add(new Amis("4", "Ali", "Asic", "0","", "0"));
         amisList.add(new Amis("5", "Amzil", "Inamm", "0","", "0"));
         amisList.add(new Amis("6", "Belarousse", "Driss", "0","", "0"));
         amisList.add(new Amis("7", "Bourgis", "Jeremy", "0","", "0"));
-        amisList.add(new Amis("8", "Demmas", "Anas", "1","", "0"));
-        amisList.add(new Amis("9", "Dia", "Ndoumbe", "1","", "0"));
+        amisList.add(new Amis("8", "Demmas", "Anas", "0","", "0"));
+        amisList.add(new Amis("9", "Dia", "Ndoumbe", "0","", "0"));
         amisList.add(new Amis("10", "Desableau", "Quentin", "0","", "0"));
         amisList.add(new Amis("11", "Dupeyrat", "Kevin", "0","", "0"));
-        amisList.add(new Amis("12", "Eddaoudi", "Atimad", "1","", "0"));
+        amisList.add(new Amis("12", "Eddaoudi", "Atimad", "0","", "0"));
         amisList.add(new Amis("13", "Ferreira", "Hugo", "0","", "0"));
-        amisList.add(new Amis("14", "Goual", "Amine", "1","", "0"));
+        amisList.add(new Amis("14", "Goual", "Amine", "0","", "0"));
         amisList.add(new Amis("15", "Hamoudi", "Jonathan", "0","", "0"));
         amisList.add(new Amis("16", "Helderal", "Mike", "0","", "0"));
         amisList.add(new Amis("17", "Kathirgamanathan", "Gamaliny", "0","", "0"));
         amisList.add(new Amis("18", "Kial", "Ramdane", "0","", "0"));
-        amisList.add(new Amis("19", "Kulanathan", "Vijay", "1","", "0"));
-        amisList.add(new Amis("20", "Laplace", "Junior", "1","", "0"));
-        amisList.add(new Amis("21", "Lim", "Patrick", "1","", "0"));
+        amisList.add(new Amis("19", "Kulanathan", "Vijay", "0","", "0"));
+        amisList.add(new Amis("20", "Laplace", "Junior", "0","", "0"));
+        amisList.add(new Amis("21", "Lim", "Patrick", "0","", "0"));
         amisList.add(new Amis("22", "Picois", "Charlotte", "0","", "0"));
         amisList.add(new Amis("23", "Rosaz", "Boris", "0","", "0"));
         amisList.add(new Amis("24", "Salemi", "Mehdi", "0","", "0"));
         amisList.add(new Amis("25", "Seymour", "Alex", "0","", "0"));
         amisList.add(new Amis("26", "Tahri", "Abderrahman", "0","", "0"));
         amisList.add(new Amis("27", "Touresse", "Clement", "0","", "0"));
-        amisList.add(new Amis("28", "Vincent", "Kevin", "1","", "0"));
+        amisList.add(new Amis("28", "Vincent", "Kevin", "0","", "0"));
 
 
 
@@ -352,14 +352,20 @@ public class ServerControler {
             return "{'error' : 'You cannot be checked !!!'}";
 
 
-
+        // S'il y a une requête on envoie le nom et le prénom de
+        // celui qui a fait la demande
         for (FriendRequest request: friendRequest)
-            if(request.getMyFriend().equals(my_id))
-                return "{'requeste' : '"+  request.getDemandeur() +"'}";
+            if(request.getMyFriend().equals(my_id)){
+                for(Amis amis: amisList){
+                    if(amis.getId().equals(request.getDemandeur()))
+                        return amis.getFirst_name() + " " + amis.getLast_name();
+                }
+            }
 
 
 
-        return "";
+
+        return "please wait";
     }
 
 
