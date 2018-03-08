@@ -1,0 +1,84 @@
+[
+
+	{
+		"id":1,
+		"text":"Quel est le nom de Golumm",
+		"duration":null,
+		"answers":[
+			{
+				"id":1,
+				"text":"Smeagole",
+				"is_right":"1"
+			},
+			{
+				"id":2,
+				"text":"Gandalf",
+				"is_right":"0"
+			},
+			{
+				"id":3,
+				"text":"Frondo",
+				"is_right":"0"
+			},
+			{
+				"id":4,
+				"text":"Bruce Wayne",
+				"is_right":"0"
+			}
+		]
+	},
+	{
+		"id":2,
+		"text":"Quel est le prénom de la mère de Clark Kent ?",
+		"duration":null,
+		"answers":[
+			{
+				"id":1,
+				"text":"Marta",
+				"is_right":"1"
+			},
+			{
+				"id":2,
+				"text":"Penny",
+				"is_right":"0"
+			},
+			{
+				"id":3,
+				"text":"Sophia",
+				"is_right":"0"
+			},
+			{
+				"id":4,
+				"text":"Laura",
+				"is_right":"0"
+			}
+		]
+	},
+	{
+		"id":3,
+		"text":"Comment s'appelle le chat à la fois mort et vivant ?",
+		"duration":null,
+		"answers":[
+			{
+				"id":1,
+				"text":"Shrodinger",
+				"is_right":"1"
+			},
+			{
+				"id":2,
+				"text":"Le chat potté",
+				"is_right":"0"
+			},
+			{
+				"id":3,
+				"text":"Catwoman",
+				"is_right":"0"
+			},
+			{
+				"id":4,
+				"text":"Grominet",
+				"is_right":"0"
+			}
+		]
+	}
+]
