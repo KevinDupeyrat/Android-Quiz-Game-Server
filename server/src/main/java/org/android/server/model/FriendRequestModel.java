@@ -43,9 +43,6 @@ public class FriendRequestModel {
             return "{'error' : 'You cannot be checked !!!'}";
 
 
-
-        System.out.println("Je push une requête ...");
-
         friendRequest.add(new FriendRequest(my_id, friend_id, null));
 
 
@@ -132,8 +129,6 @@ public class FriendRequestModel {
             return "{'error' : 'You cannot be checked !!!'}";
 
 
-        System.out.println("J'attend que mon pote reponde");
-
         for (FriendRequest request: friendRequest)
             if(request.getMyFriend().equals(my_id) && request.getDemandeur().equals(friend_id)) {
                 if(updateResponse.equals("yes"))
@@ -197,12 +192,11 @@ public class FriendRequestModel {
                         new Jeu(
                                 new Joueur(my_id),
                                 new Joueur(this.friendRequest.get(i).getMyFriend())));
-                this.friendRequest.remove(indice);
+                this.friendRequest.clear();
                 return "yes";
             }
         }
 
-        System.out.println("JE VAIS RENVOYER NO");
         return "no";
     }
 

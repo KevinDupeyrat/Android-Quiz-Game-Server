@@ -22,7 +22,7 @@ public class QuestionModel {
      * @param key
      * @return
      */
-    public String getQuestion(String key, String serverKey) {
+    public String getQuestion(String key, String serverKey, JeuModel jeuModel) {
 
         if(nbrQuestion > 10) {
             if(questionEvoyer == 2){
@@ -30,6 +30,8 @@ public class QuestionModel {
                 questionEvoyer = 0;
                 questionIndice = 0;
             }
+
+            jeuModel.getJeuList().clear();
 
             return "fin";
         }

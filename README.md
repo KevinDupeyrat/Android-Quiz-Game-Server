@@ -11,20 +11,20 @@ Il permet un Jeu Synchrone entre deux Joueurs
 -----------------------------------------------------------------
 
 
- *  1 - Ce connecter au server : checkAttending()
- *  2 - Récupérer la liste d'amis : getFriends()
- *  3 - Envoyer une requête pour un amis : putRequestFriend()
- *  4 - L'ami verifie périodiquement qu'il n'a pas une requête pour lui sur le server : checkRequest()
- *  5 - L'ami renvoie sa reponse sur le serveur : responceRequestFriend()
+ *  1 - Ce connecter au server
+ *  2 - Récupérer la liste d'amis
+ *  3 - Envoyer une requête pour un amis
+ *  4 - L'ami verifie périodiquement qu'il n'a pas une requête pour lui sur le server
+ *  5 - L'ami renvoie sa reponse sur le serveur
  *  6 - Si l'ami à dit 'oui' on lui envoie la question
- *  5'- Nous vérifions periodiquement que l'amis a repondu à la requête : getResponseFriend()
+ *  5'- Nous vérifions periodiquement que l'amis a repondu à la requête
  *  6'- Si la requête est ok on m'envoie la question
- *
- *  7 - Les reponses sont envoyer sur le server et renvoie le score de chaque joueur
- *  (Nous laisson au client la gestion de la reponse (bonne ou fausse)), puis une autre
- *  question en renvoyer aux deux joueurs.
- *
- *  8 - Au bout de 5 Questions (sauf en cas dégalité dans ce cas on renvoie une question
- *  jusqu'a trouver un gagnant) on déclare la fin du jeu
- *  (Nous laisson au client la gestion de l'affichage du gagnant).
- *  Nous supprimons la demande de requête.
+ *  7 - Les reponses sont envoyer sur le server sous la forme de true/false 
+ *  8 - Le server ajoute 5 pts si la reponse est true.
+ *  9 - Le client recupère le score à chaque fois qu'il répond à une question et
+ *      donc en raffiche une autre. Cela évite le raffraichissement permanent du score
+ *      ce qui ralentis l'application.
+ * 10 - Au bout de 5 questions, la fin de partie est déclaré par le server, il appartient
+ *      au client d'indiquer les resultats a son joueur.
+ * 11 - Une fois la partie fini nous revenons sur la page principale pour
+ *      permettre au joueur de refaire une partie avec un autre ami s'il le souhaire

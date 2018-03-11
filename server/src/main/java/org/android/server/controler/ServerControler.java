@@ -109,7 +109,7 @@ public class ServerControler {
     @ResponseBody
     public String getQuestions(@RequestParam("key") String key) throws Exception{
 
-        return questionModel.getQuestion(key, serverKey);
+        return questionModel.getQuestion(key, serverKey, jeuModel);
     }
 
 
@@ -175,7 +175,7 @@ public class ServerControler {
                                @RequestParam("reponse") boolean reponse) throws Exception   {
 
 
-        System.out.println("Le joueur " + my_id + " a repondu " + reponse);
+        // System.out.println("Le joueur " + my_id + " a repondu " + reponse);
         this.jeuModel.updateScore(my_id, reponse);
 
         //TODO: traitement de la reponse

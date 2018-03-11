@@ -32,12 +32,13 @@ public class JeuModel {
 
         result = (reponse == true) ? 5 : 0;
 
-        System.out.println("reponse : " + reponse + " / point : " + result);
-
-
         int i = 0;
         boolean find = false;
         while (i < jeuList.size() && !find) {
+
+//            System.out.println("Id joueur 1 : " + jeuList.get(i).getJoueur1().getId());
+//            System.out.println("Id joueur 2 : " + jeuList.get(i).getJoueur2().getId());
+//            System.out.println("Id : " + id);
 
             if(jeuList.get(i).getJoueur1().getId().equals(id)) {
 
@@ -63,7 +64,7 @@ public class JeuModel {
         score += result;
 
         joueur.setScore(score);
-        System.out.println("JeuModel : Joueur " + joueur.getId() + " : score = " + joueur.getScore());
+       // System.out.println("JeuModel : Joueur " + joueur.getId() + " : score = " + joueur.getScore());
 
     }
 
@@ -75,7 +76,7 @@ public class JeuModel {
      * @param id
      * @return
      */
-    public int  getScoreAdv(String id) {
+    public int getScoreAdv(String id) {
 
         //TODO: faire méthode qui permet de renvoyer
         //TODO: le score de l'adversaire
@@ -84,9 +85,15 @@ public class JeuModel {
         while (i < jeuList.size()) {
 
             if(jeuList.get(i).getJoueur1().getId().equals(id)) {
+
+                System.out.println("Score Joueur 2 : " + jeuList.get(i).getJoueur2().getScore());
+
                 return jeuList.get(i).getJoueur2().getScore();
             }
             else if(jeuList.get(i).getJoueur2().getId().equals(id)) {
+
+                System.out.println("Score Joueur 1 : " + jeuList.get(i).getJoueur1().getScore());
+
                 return jeuList.get(i).getJoueur1().getScore();
             }
 
