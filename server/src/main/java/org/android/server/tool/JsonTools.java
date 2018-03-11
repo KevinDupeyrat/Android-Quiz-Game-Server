@@ -38,7 +38,6 @@ public class JsonTools {
         byte[] bytes = Files.readAllBytes(jsonFile.toPath());
         String jsonString = new String(bytes, "UTF-8");
 
-        System.out.println(jsonString);
 
         Gson gson = new Gson();
         Type type = new TypeToken<List<Question>>(){}.getType();
@@ -60,7 +59,6 @@ public class JsonTools {
         byte[] bytes = Files.readAllBytes(jsonFile.toPath());
         String jsonString = new String(bytes, "UTF-8");
 
-        System.out.println(jsonString);
 
         Gson gson = new Gson();
         Type type = new TypeToken<List<Amis>>(){}.getType();

@@ -29,21 +29,8 @@ public class Amis {
     @SerializedName("last_score")
     private String last_score;
 
-    private List<Amis> amisList = new ArrayList<>();
-
 
     public Amis() {}
-
-    public Amis(String id, String nom, String prenom, String present, String avatar, String ls) {
-
-        this.id = id;
-        this.first_name = nom;
-        this.last_name = prenom;
-        this.is_present = present;
-        this.photo_path = avatar;
-        this.last_score = ls;
-
-    }
 
 
     public String getId() {
@@ -63,107 +50,5 @@ public class Amis {
         this.is_present = is_present;
     }
 
-    public void addAllFriendListe(List<Amis> amisList) { this.amisList.addAll(amisList) ;}
 
-    public List<Amis> getAmisList() {
-        return amisList;
-    }
-
-    /**
-     * Méthode qui permet de ce connecter au server
-     * et donc de ce rendre disponnible pour jouer
-     *
-     * @param key
-     * @param id
-     * @param serverKey
-     * @return
-     */
-    public String checkAttending(String key, String id, String serverKey) {
-
-
-        Boolean idOk = false;
-
-
-        // Vérification du code
-        if(!key.equals(serverKey))
-            return "{'error' : 'Server key not defined yet !!!'}";
-
-
-        // Parcour de la liste d'amis
-        for(Amis amis: amisList) {
-            // Si l'id est dans la liste
-            if (amis.getId().equals(id)) {
-                idOk = true;
-                amis.setIs_present("1");
-            }
-        }
-
-        if(!idOk)
-            return "{'error' : 'You cannot be checked !!!'}";
-
-
-
-        return "";
-
-    }
-
-
-    /**
-     * Méthode qui permet de nous deconnecter du server
-     * et nous rendre donc indisponnible pour jouer
-     *
-     * @param key
-     * @param id
-     * @param serverKey
-     * @return
-     */
-    public String disconnect(String key, String id, String serverKey) {
-
-        Boolean idOk = false;
-
-
-        // Vérification du code
-        if(!key.equals(serverKey))
-            return "{'error' : 'Server key not defined yet !!!'}";
-
-
-        // Parcour de la liste d'amis
-        for(Amis amis: amisList) {
-            // Si l'id est dans la liste
-            if (amis.getId().equals(id)) {
-                idOk = true;
-                amis.setIs_present("0");
-            }
-        }
-
-        if(!idOk)
-            return "{'error' : 'You cannot be checked !!!'}";
-
-
-
-        for(Amis amis: amisList)
-            System.out.println(amis.getFirst_name() + "  " + amis.getIs_present());
-
-        return "";
-    }
-
-
-    /**
-     * Méthode qui nous permet de reçevoir la liste d'amis
-     *
-     * @param key
-     * @param serverKey
-     * @return
-     */
-    public String getFriends(String key, String serverKey) {
-
-        Gson gson = new Gson();
-
-        // Vérification du code
-        if(!key.equals(serverKey))
-            return "{'error' : 'Server key not defined yet !!!'}";
-
-
-        return gson.toJson(amisList);
-    }
 }
