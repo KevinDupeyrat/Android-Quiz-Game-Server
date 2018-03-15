@@ -13,6 +13,10 @@ import java.io.IOException;
 
 
 /**
+ *
+ * Created by Kevin Dupeyrat on 18/02/18.
+ *
+ *
  * Class contrôler qui permet d'effectuer des traitement en fonction de l'URL.
  * Il s'agit d'un Web Service.
  * Voici les etats pour que deux joueurs puissent jouer enssemble :
@@ -109,7 +113,14 @@ public class ServerControler {
     @ResponseBody
     public String getQuestions(@RequestParam("key") String key) throws Exception{
 
-        return questionModel.getQuestion(key, serverKey, jeuModel);
+        String question = questionModel.getQuestion(key, serverKey);
+
+        // Ici on gère la fin de partie
+        if (question.equals("fin"))
+            finDePartie();
+
+
+        return question;
     }
 
 
@@ -200,6 +211,14 @@ public class ServerControler {
 
 
         return this.jeuModel.getScoreAdv(my_id);
+
+    }
+
+
+    private void finDePartie() {
+
+        jeuModel.getJeuList().clear();
+        friendRequestModel.getFriendRequest().clear();
 
     }
 

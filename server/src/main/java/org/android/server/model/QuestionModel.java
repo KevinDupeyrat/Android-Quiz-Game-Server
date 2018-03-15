@@ -6,6 +6,14 @@ import org.android.server.bean.Question;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Created by Kevin Dupeyrat on 10/03/18.
+ *
+ * Class qui permet d'effectuer des actions
+ * sur une liste de Question.
+ *
+ */
 public class QuestionModel {
 
 
@@ -14,7 +22,7 @@ public class QuestionModel {
     private static int questionEvoyer = 0;
     private static int nbrQuestion = 1;
 
-    public void addAllQuestionList(List<Question> questionList) { this.questionList.addAll(questionList); }
+    public void addAllQuestionList(final List<Question> questionList) { this.questionList.addAll(questionList); }
 
     /**
      * Méthode qui permet de reçevoir une question
@@ -22,7 +30,7 @@ public class QuestionModel {
      * @param key
      * @return
      */
-    public String getQuestion(String key, String serverKey, JeuModel jeuModel) {
+    public String getQuestion(final String key, final String serverKey) {
 
         if(nbrQuestion > 10) {
             if(questionEvoyer == 2){
@@ -31,7 +39,6 @@ public class QuestionModel {
                 questionIndice = 0;
             }
 
-            jeuModel.getJeuList().clear();
 
             return "fin";
         }

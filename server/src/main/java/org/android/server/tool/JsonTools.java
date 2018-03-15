@@ -14,7 +14,7 @@ import org.android.server.bean.Question;
 
 
 /**
- * Created by dupeyrat on 26/02/18.
+ * Created by Kevin Dupeyrat on 26/02/18.
  *
  * Class Outil pour la gestion des fichier Json
  * Elle permetra de générer à partir de fichier Json

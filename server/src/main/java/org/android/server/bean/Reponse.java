@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by dupeyrat on 28/02/18.
+ * Created by Kevin Dupeyrat on 28/02/18.
  *
  * Class qui représente une reponse.
  * Elle est composé de la reponse et
@@ -27,4 +27,36 @@ public class Reponse {
     public Reponse() {
     }
 
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getIs_right() {
+        return is_right;
+    }
+
+    public void setIs_right(String is_right) {
+        this.is_right = is_right;
+    }
+
+    public List<Reponse> getReponseList() {
+        return reponseList;
+    }
+
+    public void setReponseList(List<Reponse> reponseList) {
+        this.reponseList = reponseList;
+    }
 }

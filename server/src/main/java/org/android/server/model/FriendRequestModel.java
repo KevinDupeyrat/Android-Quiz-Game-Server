@@ -8,11 +8,25 @@ import org.android.server.bean.Joueur;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Created by Kevin Dupeyrat on 10/03/18.
+ *
+ * Class qui permet d'effectuer des actions
+ * sur une liste de Requête d'Amis.
+ *
+ */
 public class FriendRequestModel {
 
     private List<FriendRequest> friendRequest = new ArrayList<>();
 
     public FriendRequestModel(){}
+
+
+    public List<FriendRequest> getFriendRequest() {
+        return friendRequest;
+    }
+
 
 
     /**
@@ -186,18 +200,20 @@ public class FriendRequestModel {
             }
         }
 
-        if(this.friendRequest.get(i).getResponse() != null) {
-            if(this.friendRequest.get(i).getResponse()){
+        if (this.friendRequest.get(indice).getResponse() != null) {
+            if (this.friendRequest.get(indice).getResponse()){
                 jeuList.add(
                         new Jeu(
                                 new Joueur(my_id),
-                                new Joueur(this.friendRequest.get(i).getMyFriend())));
+                                new Joueur(this.friendRequest.get(indice).getMyFriend())));
                 this.friendRequest.clear();
                 return "yes";
+            } else if (!this.friendRequest.get(indice).getResponse()) {
+                return "no";
             }
         }
 
-        return "no";
+        return "wait";
     }
 
 

@@ -1,17 +1,14 @@
 package org.android.server.bean;
 
-import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
- * Created by dupeyrat on 18/02/18.
+ * Created by Kevin Dupeyrat on 18/02/18.
  *
  * Class qui represente un amis
- * avec son nom et son avatar
+ * avec son nom, son prenom, son dernier score,
+ * son status de connextion et son avatar
  */
 
 public class Amis {
@@ -37,6 +34,7 @@ public class Amis {
         return id;
     }
 
+
     public String getFirst_name() {
         return first_name;
     }
@@ -45,6 +43,7 @@ public class Amis {
     public String getIs_present() {
         return is_present;
     }
+
 
     public void setIs_present(String is_present) {
         this.is_present = is_present;

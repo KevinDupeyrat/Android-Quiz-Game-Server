@@ -6,6 +6,14 @@ import org.android.server.bean.Amis;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Created by Kevin Dupeyrat on 10/03/18.
+ *
+ * Class qui permet d'effectuer des actions
+ * sur une liste d'Amis.
+ *
+ */
 public class AmisModel {
 
     private List<Amis> amisList = new ArrayList<>();
