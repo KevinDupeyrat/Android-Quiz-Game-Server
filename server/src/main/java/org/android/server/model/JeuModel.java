@@ -44,9 +44,6 @@ public class JeuModel {
         boolean find = false;
         while (i < jeuList.size() && !find) {
 
-//            System.out.println("Id joueur 1 : " + jeuList.get(i).getJoueur1().getId());
-//            System.out.println("Id joueur 2 : " + jeuList.get(i).getJoueur2().getId());
-//            System.out.println("Id : " + id);
 
             if(jeuList.get(i).getJoueur1().getId().equals(id)) {
 
@@ -85,9 +82,6 @@ public class JeuModel {
      * @return
      */
     public int getScoreAdv(String id) {
-
-        //TODO: faire méthode qui permet de renvoyer
-        //TODO: le score de l'adversaire
 
         int i = 0;
         while (i < jeuList.size()) {
